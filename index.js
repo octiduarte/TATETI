@@ -10,12 +10,11 @@ let estadoJuego = "P1" // P1 | P2 | PAUSA
 
 cuadrados.forEach((cuadrado, posicion) =>{
     cuadrado.addEventListener("click", ()=>{
-        if(estadoJuego === "PAUSA") return;
-        if(cuadrado.textContent !== "") return;
-        cuadrado.textContent = estadoJuego === "P1" ? x : o;
-        estadoJuego = estadoJuego === "P1" ? "P2" : "P1";
+        if(estadoJuego === "PAUSA") return; //evitamos que se pueda seguir despues de ganar
+        if(cuadrado.textContent !== "") return; //con esto evitamos que podamos cambiar de x a o en un mismo espacio
+        cuadrado.textContent = estadoJuego === "P1" ? x : o; //alternamos entre x y o
+        estadoJuego = estadoJuego === "P1" ? "P2" : "P1"; //cambiamos turnos
         const posicionGanadora = revisarSiHayGanador();
-        console.log(typeof posicionGanadora)
         if(typeof posicionGanadora === "object") {
             ganar(posicionGanadora)
             return
@@ -36,7 +35,7 @@ modal.querySelector("button").addEventListener("click", ()=>{
 })
 
 function revisarSiHayGanador(){
-    const tablero = Array.from(cuadrados).map(cuadrado => cuadrado.textContent);
+    const tablero = Array.from(cuadrados).map(cuadrado => cuadrado.textContent); //obtenemos valores para saber como el tablero esta representado, mediante el array
     console.log(tablero)
 
     // Reviso filas
@@ -64,8 +63,7 @@ function revisarSiHayGanador(){
 
 // Marco las posiciones ganadoras y muestro el modal de victoria
 function ganar(posicionesGanadoras){
-    console.log(posicionesGanadoras)
-    posicionesGanadoras.forEach(posicion => cuadrados[posicion].classList.toggle("ganador",true));
+    posicionesGanadoras.forEach(posicion => cuadrados[posicion].classList.toggle("ganador",true)); //Decidimos quien es el ganador y cambiamos el color de fondo
     mostrarModal("Ganador jugador " + (estadoJuego === "P1" ? "2" : "1"));
 }
 

@@ -1,12 +1,13 @@
 :root{
-    --color-primario: rgb(28, 0, 34);
-    --line-style: 10px solid var(--color-primario);
+    --color-primario: rgb(255, 255, 255);
+    --line-style: 5px solid var(--color-primario);
     --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body{
-    background-color: rgb(214, 214, 214);
+    background-image: url("imagenes/pizarron\ \(1\)\ \(1\).jpg");
     user-select: none;
+    background-repeat: no-repeat;
 }
 
 h1{
@@ -48,7 +49,7 @@ h1{
 }
 
 .ganador{
-    background-color: rgb(79, 122, 79);
+    background-color: rgb(0, 0, 0);
 }
 
 dialog{
@@ -56,19 +57,28 @@ dialog{
     min-width: 50vw;
     background-color: rgba(240, 248, 255, 0.23);
     padding: 5rem;
-    border: unset;
+    border-radius: 10px;
+
 }
 
 dialog::backdrop{
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(10px);
 }
 
 dialog h2{
     font-family: var(--font-family);
-    font-size: xx-large;
+    font-size: 3rem;
+    color: aliceblue;
 }
 
 dialog button{
+    background-color: black;
+    color: aliceblue;
     font-size: larger;
     padding: 1rem;
+    border-radius: 15px;
 }
+dialog button:hover{
+    background-color: rgb(56, 56, 56);
+}
+
